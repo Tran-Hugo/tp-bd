@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+{% for produit in produits %}
+<h1>{{auteur.auteur}}</h1>
+<article>
+    <h2>{{produit.titre}}</h2>
+    <div>
+        {{produit.heros}} - {{produit.auteur}}
+        <div class="content">
+        {% if produit.refbd in couvertures %}
+            <img src="{{ asset('images/') ~ produit.refbd ~ ".jpg" }}" alt="{{ produit.refbd }}" class="thumbnail"></img>
+            {% else %}
+            <img src="{{ asset('images/defaut.jpg') }}" alt="{{ produit.refbd }}" class="thumbnail"></img>
+            {% endif %}
+                <p>{{ produit.resume }}</p>
+                {{ produit.refbd }}
+                <hr>
+            
+        </div>
+    </div>
+</article>
+{% endfor %}
+{% endblock %}

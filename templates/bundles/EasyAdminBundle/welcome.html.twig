@@ -1,0 +1,62 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title 'Bienvenue !' %}
+
+{% block main %}
+<div class="card col-12">
+ 
+  <div class="card-body bg-danger">
+    <h5 class="card-title text-center text-white fs-4">Utilisateurs</h5>
+    <p class="card-text text-center text-white fs-3">{{nbUser}}</p>
+
+  </div>
+</div>
+<br>
+    <div class="d-flex col-12 justify-content-around flex-wrap align-items-center">
+    <div class="card col-6">
+ 
+  <div class="card-body text-white bg-primary">
+    <h5 class="card-title text-center text-white fs-4">Produits</h5>
+    <p class="card-text text-center fs-3">{{nbProduit}}</p>
+
+  </div>
+</div>
+    <div class="card col-6">
+ 
+  <div class="card-body text-white bg-success">
+    <h5 class="card-title text-center text-white fs-4">Auteurs</h5>
+    <p class="card-text text-center fs-3">{{nbAuteur}}</p>
+
+  </div>
+</div>
+    <div class="card col-6">
+ 
+  <div class="card-body bg-info">
+    <h5 class="card-title text-center text-white fs-4">Genre différents</h5>
+    <p class="card-text text-center text-white fs-3">{{nbGenre}}</p>
+
+  </div>
+</div>
+<div class="card col-6">
+ 
+  <div class="card-body bg-warning">
+    <h5 class="card-title text-center text-white fs-4">Editeurs</h5>
+    <p class="card-text text-center text-white fs-3">{{nbEditeur}}</p>
+
+  </div>
+</div>
+
+
+    </div>
+    <br>
+<div class="card col-12">
+ 
+  <div class="card-body bg-dark">
+    <h5 class="card-title text-center text-white fs-4">Fournisseurs</h5>
+    <p class="card-text text-center text-white fs-3">{{nbFournisseur}}</p>
+
+  </div>
+</div>
+    
+{% endblock %}

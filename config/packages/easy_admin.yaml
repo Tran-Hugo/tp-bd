@@ -1,0 +1,8 @@
+easy_admin :
+    entities :
+      #list the entity class you want to manage
+      [-App\Entity\Genre
+      -App\Entity\Editeur
+      -App\Entity\Fournisseur
+      -App\Entity\Produit
+      -App\Entity\User]

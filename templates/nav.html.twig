@@ -1,0 +1,65 @@
+{# <ul class="nav justify-content-center col-12 d-flex justify-content-around align-items-center">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{{path('product')}}">Accueil</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{path('about')}}">à propos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{path('form_contact')}}">contact</a>
+  </li>
+  
+  
+</ul> #}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-2" href="#">Mes BD</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link fs-4 active" aria-current="page" href="{{ path('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4" href="{{ path('bd') }}">BD</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4" href="{{ path('contact') }}">Contact</a>
+        </li>
+          {% if app.user %}
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fs-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{app.user.name}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% if 'ROLE_ADMIN' in app.user.roles %}
+            <li><a class="dropdown-item" href="/admin">Tableau de bord</a></li>
+            <li><a class="dropdown-item" href="/logout">Déconnexion</a></li>
+            {% else %}
+            <li><a class="dropdown-item" href="{{path('app_login')}}">Connexion</a></li>
+            {% endif %}
+            
+          </ul>
+        </li>
+            <a href="{{path('app_logout')}}">
+            <button type="button" class="btn btn-danger text-white">Déconnexion</button>
+            </a>
+          {% endif %}
+          {% if not app.user %}
+            <li class="nav-item"></li>
+            <a href="{{path('app_login')}}">
+            <button type="button" class="btn btn-primary text-white">Connexion</button>
+            </a>
+          {% endif %}
+
+          </ul>
+          
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
