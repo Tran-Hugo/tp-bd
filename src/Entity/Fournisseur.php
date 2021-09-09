@@ -23,7 +23,7 @@ class Fournisseur
     private $fournisseur;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Editeur::class)
+     * @ORM\ManyToOne(targetEntity=Editeur::class, cascade={"remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $editeur;
