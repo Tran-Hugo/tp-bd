@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Auteur;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Auteur|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,26 @@ class AuteurRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findAuteursWithProduits()
+    {
+        return $this->createQueryBuilder('a')
+                    ->select('a.id','a.auteur','COUNT(p.auteur) as nblivres')
+                    ->innerJoin('a.produits','p',Join::WITH,'a.id = p.auteur')
+                    ->groupBy('p.auteur')
+                    ->getQuery()
+                    ->getResult();
+    
+    } 
+
+    public function searchAuteurWithProduits($search)
+    {
+        return $this->createQueryBuilder('a')
+                    ->select('a.id','a.auteur','COUNT(p.auteur) as nblivres')
+                    ->innerJoin('a.produits','p',Join::WITH,'a.id = p.auteur')
+                    ->groupBy('p.auteur')
+                    ->where('a.auteur LIKE :s')
+                    ->setParameter('s','%'.$search.'%')
+                    ->getQuery()
+                    ->getResult();
+    }
 }

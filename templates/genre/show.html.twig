@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<h1 class='text-center'>{{genre.genre}}</h1>
 
-<h1 class='text-center'>BD</h1>
-<br>
 <div class="d-flex flex-wrap justify-content-around">
 {% for book in books %}
 <div class="card" style="width: 18rem; height:60vh; overflow:scroll; margin:1em">
-  {% if book.refbd in couvertures %}
+  
+   {% if book.refbd in couvertures %}
             <img src="{{ asset('images/') ~ book.refbd ~ ".jpg" }}" alt="{{ book.refbd }}"></img>
             {% else %}
             <img src="{{ asset('images/defaut.jpg') }}" alt="{{ book.refbd }}"></img>
@@ -22,9 +22,5 @@
   </div>
 </div>
 {% endfor %}
-<div class="d-flex justify-content-center">
-        {{ knp_pagination_render(books) }}
-    </div>
 </div>
 {% endblock %}
-

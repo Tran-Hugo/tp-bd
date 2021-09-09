@@ -19,6 +19,7 @@
     <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    <br>
     <label for="inputPassword">Mot de Passe</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
@@ -36,11 +37,13 @@
             </label>
         </div>
     #}
+    <br>
 
     <button class="btn btn-lg btn-primary" type="submit">
         Connexion
     </button>
 </form>
+<br>
 <a href="{{ path("security_registration") }}">S'inscrire</a>
 </div>
 {% endblock %}

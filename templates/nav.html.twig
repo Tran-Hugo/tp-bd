@@ -26,6 +26,9 @@
           <a class="nav-link fs-4" href="{{ path('bd') }}">BD</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link fs-4" href="{{ path('genre') }}">Genre</a>
+        </li>
+         <li class="nav-item">
           <a class="nav-link fs-4" href="{{ path('contact') }}">Contact</a>
         </li>
           {% if app.user %}
@@ -36,29 +39,29 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             {% if 'ROLE_ADMIN' in app.user.roles %}
             <li><a class="dropdown-item" href="/admin">Tableau de bord</a></li>
-            <li><a class="dropdown-item" href="/logout">Déconnexion</a></li>
+            
             {% else %}
-            <li><a class="dropdown-item" href="{{path('app_login')}}">Connexion</a></li>
+            <li><a class="dropdown-item" href="{{path('app_logout')}}">Déconnexion</a></li>
             {% endif %}
             
           </ul>
         </li>
-            <a href="{{path('app_logout')}}">
+            <a href="{{path('app_logout')}}" class="d-flex align-items-center">
             <button type="button" class="btn btn-danger text-white">Déconnexion</button>
             </a>
           {% endif %}
           {% if not app.user %}
             <li class="nav-item"></li>
-            <a href="{{path('app_login')}}">
+            <a href="{{path('app_login')}}" class="d-flex align-items-center">
             <button type="button" class="btn btn-primary text-white">Connexion</button>
             </a>
           {% endif %}
 
           </ul>
           
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form method="get" action="{{path('bd')}}" class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Recherche par auteur" aria-label="recherche" name="search">
+        <button class="btn btn-outline-success" type="submit">Recherche</button>
       </form>
     </div>
   </div>
